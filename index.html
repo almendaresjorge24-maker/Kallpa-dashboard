@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es-419">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KALLPA / AURA - Fundación Banco de Alimentos Solidario Chile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes highlight {
+            0% { background-color: rgba(16, 185, 129, 0.3); }
+            100% { background-color: transparent; }
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+        .animate-highlight {
+            animation: highlight 1.5s ease-out;
+        }
+        .animate-toast {
+            animation: slideDown 0.3s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-[#0b0f17] text-slate-100 min-h-screen font-sans selection:bg-emerald-500 selection:text-white relative">
+
+    <!-- Notificación Flotante Interactiva (Toast) -->
+    <div id="toastNotification" class="fixed top-20 right-6 z-50 hidden bg-emerald-900/90 text-emerald-200 border border-emerald-700 px-4 py-3 rounded-xl shadow-2xl backdrop-blur text-xs font-mono animate-toast flex items-center gap-2">
+        <span>⚡</span> <span id="toastText">Operación realizada con éxito.</span>
+    </div>
+
+    <!-- Header Principal -->
+    <header class="bg-[#131b2e]/90 border-b border-slate-800/80 px-6 py-4 backdrop-blur flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sticky top-0 z-40">
+        <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-emerald-600 rounded-xl flex items-center justify-center text-white font-bold text-2xl shadow-lg shadow-emerald-900/30 shrink-0 transform hover:scale-105 transition duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+            </div>
+            <div>
+                <div class="flex items-center gap-3 flex-wrap">
+                    <h1 class="text-xl font-bold tracking-wider text-white">KALLPA / AURA</h1>
+                    <span class="text-xs font-semibold px-2.5 py-0.5 rounded-md bg-cyan-950 text-cyan-400 border border-cyan-800">
+                        Fundación Banco de Alimentos Solidario Chile
+                    </span>
+                    <span class="bg-emerald-950 text-emerald-400 border border-emerald-800 text-[10px] font-mono px-2 py-0.5 rounded-md">
+                        Case 5 - Food Bank
+                    </span>
+                </div>
+                <p class="text-xs text-slate-400 font-medium mt-0.5">SYCCHILE 3.000 - JORGE ALMENDARES AROS</p>
+            </div>
+        </div>
+        <div>
+            <span class="inline-flex items-center gap-2 bg-emerald-950/80 text-emerald-400 border border-emerald-800/80 px-3.5 py-1.5 rounded-full text-xs font-medium shadow-sm">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+                Sistema Activo (FIFO)
+            </span>
+        </div>
+    </header>
+
+    <!-- Contenedor Principal -->
+    <main class="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+        <!-- Columna Izquierda -->
+        <section class="lg:col-span-1 space-y-6">
+
+            <!-- 1. Prompt del Sistema -->
+            <div class="bg-[#131b2e]/70 border border-slate-800 hover:border-emerald-500/50 rounded-xl p-4 shadow-lg transition duration-300">
+                <h2 class="text-xs font-mono uppercase tracking-wider text-emerald-400 mb-2 flex items-center gap-2">
+                    <span class="animate-pulse">></span> Prompt del Sistema Utilizado:
+                </h2>
+                <div class="bg-[#090d14] rounded-lg p-3 border border-slate-800/80 font-mono text-[11px] text-slate-300 leading-relaxed">
+                    Eres Kallpa / AURA - Asistente Unificado de Soporte y Alimentos, coordinador logístico del banco de alimentos. Gestionas ingresos por voz/texto y priorizas salidas FIFO. NUNCA menciones que eres una IA.
+                </div>
+            </div>
+
+            <!-- 2. Regla Directiva -->
+            <div class="bg-[#131b2e]/70 border border-slate-800 hover:border-slate-700 rounded-xl p-5 shadow-lg transition duration-300">
+                <h3 class="text-emerald-400 font-semibold text-sm mb-2 flex items-center gap-2">
+                    <span>📋</span> Regla Directiva de Comunicación:
+                </h3>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                    El agente se identifica exclusivamente por sus funciones logísticas y objetivos humanitarios. <strong class="text-white">Jamás menciona que es una Inteligencia Artificial o LLM</strong>, garantizando una adopción fluida por parte de voluntarios mayores.
+                </p>
+            </div>
+
+            <!-- 3. Contexto Operativo y Desafíos Logísticos (NUEVO) -->
+            <div class="bg-[#131b2e]/70 border border-slate-800 hover:border-amber-500/50 rounded-xl p-5 shadow-lg transition duration-300">
+                <h3 class="text-amber-400 font-semibold text-sm mb-3 flex items-center gap-2">
+                    <span>⚠️</span> Contexto Operativo y Desafíos:
+                </h3>
+                <div class="space-y-2.5 text-xs text-slate-300 leading-relaxed">
+                    <p>
+                        <strong class="text-white">Personal Voluntario:</strong> Rota semanalmente; en su mayoría son <strong class="text-white">personas mayores de 60 años</strong> sin experiencia previa en tecnología.
+                    </p>
+                    <p>
+                        <strong class="text-white">Riesgo de Merma:</strong> Pérdida frecuente de alimentos por vencimiento apresurado debido a la falta de formación formal en logística de almacenamiento y control de caducidad.
+                    </p>
+                    <p>
+                        <strong class="text-white">Equidad y Reparto:</strong> Desigualdad en la distribución (familias que reciben en exceso frente a otras sin aportes), generando potencial descontento, discordia y desigualdad que Kallpa / AURA mitiga con orden FIFO estricto.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 4. Stack Tecnológico -->
+            <div class="bg-[#131b2e]/70 border border-slate-800 hover:border-slate-700 rounded-xl p-5 shadow-lg transition duration-300">
+                <h3 class="text-emerald-400 font-semibold text-sm mb-4 flex items-center gap-2">
+                    <span>🧩</span> Stack Tecnológico
+                </h3>
+                <div class="space-y-2.5 text-xs">
+                    <div class="flex justify-between items-center border-b border-slate-800/80 pb-2">
+                        <span class="text-slate-400">Procesamiento de Voz:</span>
+                        <span class="text-emerald-400 font-semibold font-mono">OpenAI Whisper</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-slate-800/80 pb-2">
+                        <span class="text-slate-400">Motor Lógico:</span>
+                        <span class="text-emerald-400 font-semibold font-mono">GPT-4o-mini</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-slate-800/80 pb-2">
+                        <span class="text-slate-400">Frontend Core:</span>
+                        <span class="text-cyan-400 font-semibold font-mono">HTML5 / JS (Vanilla ES6)</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-slate-800/80 pb-2">
+                        <span class="text-slate-400">Estilos UI:</span>
+                        <span class="text-cyan-400 font-semibold font-mono">Tailwind CSS CDN</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-slate-400">Criterio Logístico:</span>
+                        <span class="text-amber-400 font-semibold font-mono">FIFO / Prioridad Caducidad</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Registro de Lotes -->
+            <div class="bg-[#131b2e]/70 border border-slate-800 hover:border-emerald-500/50 rounded-xl p-5 shadow-lg transition duration-300">
+                <h2 class="text-sm font-semibold text-white mb-4 flex items-center gap-2">
+                    <span class="text-emerald-400">📦</span> Ingreso de Lotes / Donaciones
+                </h2>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-medium text-slate-400 mb-1">Descripción del Lote</label>
+                        <input type="text" id="loteInput" placeholder="Ej: 3 cajas de leche entera (Vence hoy)" class="w-full bg-[#090d14] border border-slate-800 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-slate-400 mb-1">Prioridad Logística</label>
+                        <select id="prioridadInput" class="w-full bg-[#090d14] border border-slate-800 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition">
+                            <option value="Alta (FIFO)">Alta (FIFO)</option>
+                            <option value="Normal (Stock Estándar)">Normal (Stock Estándar)</option>
+                        </select>
+                    </div>
+                    <button onclick="agregarLote()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-medium py-2.5 rounded-lg text-sm transition transform active:scale-95 shadow-md shadow-emerald-950 cursor-pointer">
+                        + Registrar Ingreso
+                    </button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Columna Derecha -->
+        <section class="lg:col-span-2 space-y-6">
+
+            <!-- Flujo Logístico Activo -->
+            <div class="bg-[#131b2e]/70 border border-slate-800 hover:border-slate-700 rounded-xl p-5 shadow-lg transition duration-300">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-sm font-semibold text-white flex items-center gap-2">
+                        <span class="text-emerald-400">📊</span> Flujo Logístico en Acción (FIFO) 
+                        <span id="contadorBadge" class="ml-2 bg-emerald-950 text-emerald-400 text-xs px-2 py-0.5 rounded-full border border-emerald-800 font-mono">2 Activos</span>
+                    </h2>
+                    <span class="text-xs text-slate-400 font-mono">Orden automático de distribución equitativa</span>
+                </div>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="border-b border-slate-800 text-xs font-mono text-slate-400">
+                                <th class="p-3">ID Lote</th>
+                                <th class="p-3">Descripción</th>
+                                <th class="p-3">Prioridad / Estado</th>
+                                <th class="p-3 text-center">Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaInventario" class="divide-y divide-slate-800/60 text-sm">
+                            <tr class="hover:bg-slate-800/30 transition">
+                                <td class="p-3 font-mono text-xs text-slate-400">#001</td>
+                                <td class="p-3 text-white">3 cajas de leche entera (Vence hoy)</td>
+                                <td class="p-3"><span class="bg-amber-950/80 text-amber-400 border border-amber-800 text-xs px-2.5 py-1 rounded-full">Alta (FIFO)</span></td>
+                                <td class="p-3 text-center">
+                                    <button onclick="despacharLote(this)" class="bg-slate-800 hover:bg-rose-950 hover:text-rose-400 hover:border-rose-800 text-slate-300 px-3 py-1 rounded-lg text-xs border border-slate-700 transition transform active:scale-95 cursor-pointer">Despachar</button>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-800/30 transition">
+                                <td class="p-3 font-mono text-xs text-slate-400">#002</td>
+                                <td class="p-3 text-white">5 sacos de papas (Vence Viernes)</td>
+                                <td class="p-3"><span class="bg-amber-950/80 text-amber-400 border border-amber-800 text-xs px-2.5 py-1 rounded-full">Alta (FIFO)</span></td>
+                                <td class="p-3 text-center">
+                                    <button onclick="despacharLote(this)" class="bg-slate-800 hover:bg-rose-950 hover:text-rose-400 hover:border-rose-800 text-slate-300 px-3 py-1 rounded-lg text-xs border border-slate-700 transition transform active:scale-95 cursor-pointer">Despachar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Ejemplo de Interacción por nota de voz -->
+            <div class="bg-[#131b2e]/70 border border-slate-800 hover:border-slate-700 rounded-xl p-5 shadow-lg space-y-3 transition duration-300">
+                <h3 class="text-xs font-mono uppercase tracking-wider text-slate-400">Ejemplo de Interacción por nota de voz de un voluntario y la respuesta automatizada de Kallpa / AURA:</h3>
+                
+                <div class="space-y-3 font-mono text-xs">
+                    <div class="bg-[#090d14] p-3.5 rounded-lg border border-slate-800">
+                        <p class="text-amber-400 font-semibold mb-1">👤 Entrada (Voluntario):</p>
+                        <p class="text-slate-300">"Hola, acaban de llegar 3 cajas de leche entera que vencen este viernes y 5 sacos de papas."</p>
+                    </div>
+
+                    <div class="bg-[#090d14] p-3.5 rounded-lg border border-slate-800">
+                        <p class="text-emerald-400 font-semibold mb-1">🤖 Respuesta de Kallpa / AURA:</p>
+                        <p class="text-slate-300">"Entendido, ingreso registrado: 3 cajas de leche (vencimiento prioritario este viernes) y 5 sacos de papas. Asignados al stock aplicando orden FIFO. ¿Deseas verificar la lista de entregas para hoy?"</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Asistente de Apoyo Feedback -->
+            <div class="bg-[#131b2e]/70 border border-slate-800 hover:border-slate-700 rounded-xl p-4 shadow-lg transition duration-300">
+                <h2 class="text-xs font-semibold text-slate-400 mb-2 flex items-center gap-2 uppercase tracking-wider font-mono">
+                    <span>🎙️</span> Asistente de Apoyo:
+                </h2>
+                <p id="feedbackAura" class="text-xs text-slate-300 font-mono bg-[#090d14] p-3 rounded-lg border border-slate-800">
+                    Sistema listo para recibir cargas operativas de voluntarios.
+                </p>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#131b2e]/90 border-t border-slate-800/80 mt-12 py-4 text-center text-xs text-slate-500">
+        <p>SYCCHILE 3.000 - JORGE ALMENDARES AROS &copy; 2026 | Kallpa / AURA</p>
+    </footer>
+
+    <!-- Script Interactivo con Animaciones y Comillas Invertidas -->
+    <script>
+        let contadorLotes = 2;
+
+        function mostrarToast(mensaje) {
+            const toast = document.getElementById('toastNotification');
+            const texto = document.getElementById('toastText');
+            texto.innerText = mensaje;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+
+        function actualizarContador() {
+            const tabla = document.getElementById('tablaInventario');
+            const total = tabla.getElementsByTagName('tr').length;
+            document.getElementById('contadorBadge').innerText = total + " Activos";
+        }
+
+        function agregarLote() {
+            const input = document.getElementById('loteInput');
+            const prioridad = document.getElementById('prioridadInput').value;
+            const tabla = document.getElementById('tablaInventario');
+            const feedback = document.getElementById('feedbackAura');
+
+            if(input.value.trim() === "") {
+                alert("Por favor, ingresa una descripción válida del lote.");
+                return;
+            }
+
+            contadorLotes++;
+            const idLote = "#00" + contadorLotes;
+            const badgeClass = prioridad.includes("Alta") 
+                ? "bg-amber-950/80 text-amber-400 border-amber-800" 
+                : "bg-emerald-950/80 text-emerald-400 border-emerald-800";
+
+            const nuevaFila = document.createElement('tr');
+            nuevaFila.className = "animate-fade-in animate-highlight hover:bg-slate-800/30 transition";
+            nuevaFila.innerHTML = `
+                <td class="p-3 font-mono text-xs text-slate-400">${idLote}</td>
+                <td class="p-3 text-white">${input.value}</td>
+                <td class="p-3"><span class="${badgeClass} text-xs px-2.5 py-1 rounded-full border">${prioridad}</span></td>
+                <td class="p-3 text-center">
+                    <button onclick="despacharLote(this)" class="bg-slate-800 hover:bg-rose-950 hover:text-rose-400 hover:border-rose-800 text-slate-300 px-3 py-1 rounded-lg text-xs border border-slate-700 transition transform active:scale-95 cursor-pointer">Despachar</button>
+                </td>
+            `;
+            
+            tabla.appendChild(nuevaFila);
+            
+            /* Comillas invertidas garantizadas para evitar errores de sintaxis */
+            feedback.innerText =  `Ingreso registrado exitosamente. Se aplicó orden FIFO para "${input.value}".`;
+            mostrarToast (`Lote ${idLote} registrado correctamente.`);
+            
+            input.value = "";
+            actualizarContador();
+        }
+
+        function despacharLote(btn) {
+            const fila = btn.closest('tr');
+            fila.classList.add('opacity-0', 'scale-95', 'transition', 'duration-300');
+            setTimeout(() => {
+                fila.remove();
+                document.getElementById('feedbackAura').innerText = "Salida despachada correctamente bajo criterio FIFO de distribución.";
+                mostrarToast("Lote despachado exitosamente bajo protocolo FIFO.");
+                actualizarContador();
+            }, 300);
+        }
+    </script>
+</body>
+</html>
